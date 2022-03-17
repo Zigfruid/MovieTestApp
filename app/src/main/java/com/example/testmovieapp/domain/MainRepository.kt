@@ -22,4 +22,26 @@ class MainRepository(private val api:ApiInterface) {
         }
     }.flowOn(Dispatchers.IO)
 
+
+    fun getTopRatedMovies(): Flow<Result<ResponseMovies>> = flow{
+        val response=api.getTopRatedMovies(API_KEY)
+        if (response.isSuccessful){
+            emit(Result.success(response.body()!!))
+        }
+        else{
+            emit(Result.failure(Throwable("Произошла ошибка")))
+        }
+    }.flowOn(Dispatchers.IO)
+
+
+    fun getUpcomingMovies(): Flow<Result<ResponseMovies>> = flow{
+        val response=api.getUpcomingMovies(API_KEY)
+        if (response.isSuccessful){
+            emit(Result.success(response.body()!!))
+        }
+        else{
+            emit(Result.failure(Throwable("Произошла ошибка")))
+        }
+    }.flowOn(Dispatchers.IO)
+
 }

@@ -13,4 +13,16 @@ interface ApiInterface {
         @Query("api_key") apiKey:String
     ): Response<ResponseMovies>
 
+
+    @GET("movie/top_rated")
+    suspend fun getTopRatedMovies(
+        @Query("api_key") apiKey:String
+    ): Response<ResponseMovies>
+
+
+    @GET("movie/upcoming")
+    suspend fun getUpcomingMovies(
+        @Query("api_key") apiKey:String
+    ): Response<ResponseMovies>
+
 }

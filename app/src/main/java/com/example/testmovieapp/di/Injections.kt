@@ -6,6 +6,10 @@ import com.example.testmovieapp.data.ApiInterface
 import com.example.testmovieapp.domain.MainRepository
 import com.example.testmovieapp.ui.popular.PopularAdapter
 import com.example.testmovieapp.ui.popular.PopularViewModel
+import com.example.testmovieapp.ui.top.TopRatedAdapter
+import com.example.testmovieapp.ui.top.TopRatedViewModel
+import com.example.testmovieapp.ui.upcoming.UpComingAdapter
+import com.example.testmovieapp.ui.upcoming.UpComingViewModel
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -63,11 +67,14 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     viewModel { PopularViewModel(get()) }
-//    viewModel { MovieViewModel(get()) }
-//    viewModel { FavoriteViewModel(get()) }
+    viewModel { TopRatedViewModel(get()) }
+    viewModel { UpComingViewModel(get()) }
 }
 
 val adapterModule = module {
     single { PopularAdapter() }
+    single { TopRatedAdapter() }
+    single { UpComingAdapter() }
+
 
 }
