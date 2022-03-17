@@ -2,7 +2,6 @@ package com.example.testmovieapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
 import com.example.testmovieapp.databinding.ActivityMainBinding
 import com.example.testmovieapp.ui.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -13,9 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        val adapter  = ViewPagerAdapter(supportFragmentManager, lifecycle)
+        setContentView(binding.root)
+
+        val adapter  = ViewPagerAdapter(this)
         binding.viewPager2.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager2){tab, position->

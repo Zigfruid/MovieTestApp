@@ -28,7 +28,6 @@ class PopularAdapter:RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
                 Glide.with(root)
                     .load(glideUrl)
                     .into(imageView)
-
             }
         }
     }

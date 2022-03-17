@@ -1,6 +1,7 @@
 package com.example.testmovieapp.ui
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -8,7 +9,7 @@ import com.example.testmovieapp.ui.popular.PopularFragment
 import com.example.testmovieapp.ui.top.TopRatedFragment
 import com.example.testmovieapp.ui.upcoming.UpcomingFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):FragmentStateAdapter(fragmentManager, lifecycle) {
+class ViewPagerAdapter(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
         return 3
     }

@@ -1,6 +1,5 @@
 package com.example.testmovieapp.data.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class Movie(

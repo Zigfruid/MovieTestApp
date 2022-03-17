@@ -16,9 +16,8 @@ class PopularViewModel(private val mainRepository: MainRepository): ViewModel() 
     private var mError: MutableLiveData<String> = MutableLiveData()
     val error: LiveData<String> = mError
 
-
     fun getPopularMovies(){
-        mainRepository.getPopulateMovies().onEach {
+        mainRepository.getPopularMovies().onEach {
             it.onSuccess { res->
                 mutableSuccess.value=res
             }
