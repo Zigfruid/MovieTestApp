@@ -1,6 +1,8 @@
 package com.example.testmovieapp.domain
 
+import androidx.lifecycle.viewModelScope
 import com.example.testmovieapp.data.ApiInterface
+import com.example.testmovieapp.data.model.Credit
 import com.example.testmovieapp.data.model.ResponseMovies
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -41,6 +43,16 @@ class MainRepository(private val api:ApiInterface) {
         }
         else{
             emit(Result.failure(Throwable("Произошла ошибка")))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    fun getMovieCredits(movieId:Int):Flow<Result<Credit>> =flow{
+        val response=api.getMovieCredits(movieId,API_KEY)
+        if (response.isSuccessful){
+            emit(Result.success(response.body()!!))
+        }
+        else{
+            emit(Result.failure(Throwable()))
         }
     }.flowOn(Dispatchers.IO)
 

@@ -4,6 +4,8 @@ import com.example.testmovieapp.BuildConfig.BASE_URL
 import com.example.testmovieapp.core.extentions.addLoggingInterceptor
 import com.example.testmovieapp.data.ApiInterface
 import com.example.testmovieapp.domain.MainRepository
+import com.example.testmovieapp.ui.detail.DetailAdapter
+import com.example.testmovieapp.ui.detail.DetailViewModel
 import com.example.testmovieapp.ui.popular.PopularAdapter
 import com.example.testmovieapp.ui.popular.PopularViewModel
 import com.example.testmovieapp.ui.top.TopRatedAdapter
@@ -69,12 +71,16 @@ val viewModelModule = module {
     viewModel { PopularViewModel(get()) }
     viewModel { TopRatedViewModel(get()) }
     viewModel { UpComingViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
+
+
 }
 
 val adapterModule = module {
     single { PopularAdapter() }
     single { TopRatedAdapter() }
     single { UpComingAdapter() }
+    single { DetailAdapter() }
 
 
 }

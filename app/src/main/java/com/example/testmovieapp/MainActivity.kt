@@ -13,23 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val adapter  = ViewPagerAdapter(this)
-        binding.viewPager2.adapter = adapter
-
-        TabLayoutMediator(binding.tabLayout, binding.viewPager2){tab, position->
-            when(position){
-                0->{
-                    tab.text = "Popular"
-                }
-                1->{
-                    tab.text = "Top Rated"
-                }
-                2->{
-                    tab.text = "Upcoming"
-                }
-            }
-        }.attach()
     }
 }
 

@@ -8,6 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.testmovieapp.databinding.FragmentPopularBinding
+import com.example.testmovieapp.ui.main.MainFragmentDirections
+import com.google.gson.GsonBuilder
+import com.google.gson.internal.GsonBuildConfig
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,7 +37,9 @@ class PopularFragment : Fragment() {
         setUpObservers()
 
         adapter.setOnClickItem {
-           // findNavController().navigate(PopularFragmentDirections)
+            val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+            val gsonString = gsonPretty.toJson(it)
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(gsonString))
         }
 
     }
