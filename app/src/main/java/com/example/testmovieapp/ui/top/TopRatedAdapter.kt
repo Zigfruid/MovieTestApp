@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.example.testmovieapp.R
 import com.example.testmovieapp.core.extentions.inflate
+import com.example.testmovieapp.core.extentions.onClick
 import com.example.testmovieapp.core.extentions.scope
 import com.example.testmovieapp.data.model.Movie
 import com.example.testmovieapp.databinding.ItemMovieBinding
@@ -20,6 +21,10 @@ class TopRatedAdapter:RecyclerView.Adapter<TopRatedAdapter.TopRatedViewHolder>()
             notifyDataSetChanged()
         }
 
+    private var onClickItem:(movie:Movie) -> Unit = {}
+    fun setOnClickItem(onClickItem:(movie:Movie) -> Unit){
+        this.onClickItem=onClickItem
+    }
 
 
     inner class TopRatedViewHolder(private val binding: ItemMovieBinding):RecyclerView.ViewHolder(binding.root){
@@ -30,6 +35,9 @@ class TopRatedAdapter:RecyclerView.Adapter<TopRatedAdapter.TopRatedViewHolder>()
                 Glide.with(root)
                     .load(glideUrl)
                     .into(imageView)
+            }
+            binding.root.onClick {
+                onClickItem.invoke(model)
             }
         }
     }

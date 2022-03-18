@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.testmovieapp.R
 import com.example.testmovieapp.databinding.FragmentUpcomingBinding
+import com.example.testmovieapp.ui.main.MainFragmentDirections
+import com.google.gson.GsonBuilder
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,6 +33,12 @@ class UpcomingFragment : Fragment() {
         binding.rvUpComing.adapter = adapter
         viewModel.getUpComingMovies()
         setUpObservers()
+
+        adapter.setOnClickItem {
+            val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+            val gsonString = gsonPretty.toJson(it)
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(gsonString))
+        }
     }
     private fun setUpObservers(){
         viewModel.success.observe(viewLifecycleOwner) {
