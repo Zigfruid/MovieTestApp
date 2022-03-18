@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.example.testmovieapp.core.extentions.onClick
 import com.example.testmovieapp.databinding.FragmentDetailActorBinding
+import com.google.gson.GsonBuilder
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,6 +42,13 @@ class DetailOfActorFragment:Fragment() {
         binding.btnBack.onClick {
             findNavController().popBackStack()
         }
+
+        adapter.setOnClickItem {
+            val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+            val gsonString = gsonPretty.toJson(it)
+            findNavController().navigate(DetailOfActorFragmentDirections.actionDetailOfActorFragmentToDetailFragment(gsonString))
+        }
+
     }
     private fun setUpObservers(){
         viewModel.success.observe(viewLifecycleOwner) {
