@@ -38,7 +38,7 @@ class DetailActorAdapter:RecyclerView.Adapter<DetailActorAdapter.DetailViewHolde
             val glideUrl = GlideUrl("https://image.tmdb.org/t/p/original/${model.profilePath}")
             Glide.with(root)
                 .load(glideUrl)
-                .placeholder(R.drawable.no_icon)
+                .placeholder(R.drawable.no_image)
                 .into(ivActor)
 
             binding.root.onClick {

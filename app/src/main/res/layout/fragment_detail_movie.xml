@@ -71,22 +71,13 @@
                 android:layout_marginTop="16dp"/>
 
             <TextView
-                android:id="@+id/Name"
+                android:id="@+id/tvOriginalTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/tvOriginalTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginHorizontal="@dimen/margin_standard"
-                android:text="name "
-                android:textColor="@android:color/black"/>
-
-            <TextView
-                android:id="@+id/tvOriginalTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/ivFavorite"
-                app:layout_constraintStart_toEndOf="@id/Name"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="8dp"
                 android:textStyle="bold"
@@ -97,12 +88,12 @@
                 android:id="@+id/Overview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="@string/overview"
+                android:textColor="@color/teal_700"
+                android:text="@string/description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvOriginalTitle"
                 android:layout_marginHorizontal="@dimen/margin_standard"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="30dp"/>
 
             <TextView
                 android:id="@+id/tvOverview"
@@ -115,26 +106,14 @@
                 android:layout_marginHorizontal="@dimen/margin_standard"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/Rank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rank"
-                android:textColor="@color/black"
-                android:layout_marginTop="@dimen/margin_standard"
-                android:layout_marginStart="@dimen/margin_standard"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvOverview" />
-
             <ImageView
                 android:id="@+id/ivRank"
                 android:src="@drawable/ic_rate"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="@dimen/margin_standard"
-                app:layout_constraintStart_toEndOf="@id/Rank"
-                app:layout_constraintTop_toBottomOf="@id/tvOverview"/>
+                app:layout_constraintStart_toStartOf="@id/tvOriginalTitle"
+                app:layout_constraintBottom_toTopOf="@id/Overview"
+                app:layout_constraintTop_toBottomOf="@id/tvOriginalTitle"/>
 
             <TextView
                 android:id="@+id/tvRank"
@@ -142,9 +121,10 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/margin_standard"
+                android:layout_marginStart="8dp"
                 app:layout_constraintStart_toEndOf="@id/ivRank"
-                app:layout_constraintTop_toBottomOf="@id/tvOverview" />
+                app:layout_constraintTop_toTopOf="@id/ivRank"
+                app:layout_constraintBottom_toBottomOf="@id/ivRank" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -152,8 +132,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:listitem="@layout/item_actor"
+                android:layout_marginTop="8dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/tvRank"
+                app:layout_constraintTop_toBottomOf="@id/tvOverview"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
