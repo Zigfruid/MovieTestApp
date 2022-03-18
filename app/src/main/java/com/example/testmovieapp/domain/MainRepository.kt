@@ -1,7 +1,8 @@
 package com.example.testmovieapp.domain
 
-import androidx.lifecycle.viewModelScope
 import com.example.testmovieapp.data.ApiInterface
+import com.example.testmovieapp.data.model.BiographyOfPerson
+import com.example.testmovieapp.data.model.Compilation
 import com.example.testmovieapp.data.model.Credit
 import com.example.testmovieapp.data.model.ResponseMovies
 import kotlinx.coroutines.Dispatchers
@@ -55,5 +56,25 @@ class MainRepository(private val api:ApiInterface) {
             emit(Result.failure(Throwable()))
         }
     }.flowOn(Dispatchers.IO)
+
+
+    fun getBio(actorId:Int):Flow<Result<BiographyOfPerson>> = flow {
+        val response = api.getPersonInfo(actorId, API_KEY)
+        if (response.isSuccessful){
+            emit(Result.success(response.body()!!))
+        }else{
+            emit(Result.failure(Throwable()))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    fun getMovies(actorId:Int):Flow<Result<Compilation>> = flow {
+        val response = api.getMovieByActor(actorId, API_KEY)
+        if (response.isSuccessful){
+            emit(Result.success(response.body()!!))
+        }else{
+            emit(Result.failure(Throwable()))
+        }
+    }.flowOn(Dispatchers.IO)
+
 
 }

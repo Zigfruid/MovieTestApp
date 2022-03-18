@@ -1,4 +1,4 @@
-package com.example.testmovieapp.ui.detail
+package com.example.testmovieapp.ui.detail.movie
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
@@ -7,11 +7,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.example.testmovieapp.R
 import com.example.testmovieapp.core.extentions.inflate
+import com.example.testmovieapp.core.extentions.onClick
 import com.example.testmovieapp.core.extentions.scope
 import com.example.testmovieapp.data.model.Actor
 import com.example.testmovieapp.databinding.ItemActorBinding
 
-class DetailAdapter:RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
+class DetailActorAdapter:RecyclerView.Adapter<DetailActorAdapter.DetailViewHolder>() {
     var models: MutableList<Actor> = mutableListOf()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
@@ -39,6 +40,15 @@ class DetailAdapter:RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
                 .load(glideUrl)
                 .placeholder(R.drawable.no_icon)
                 .into(ivActor)
+
+            binding.root.onClick {
+                onClickItem.invoke(model)
+            }
         }
+    }
+
+    private var onClickItem:(actor: Actor) -> Unit = {}
+    fun setOnClickItem(onClickItem:(actor: Actor) -> Unit){
+        this.onClickItem=onClickItem
     }
 }

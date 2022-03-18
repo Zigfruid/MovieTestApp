@@ -1,5 +1,7 @@
 package com.example.testmovieapp.data
 
+import com.example.testmovieapp.data.model.BiographyOfPerson
+import com.example.testmovieapp.data.model.Compilation
 import com.example.testmovieapp.data.model.Credit
 import com.example.testmovieapp.data.model.ResponseMovies
 import retrofit2.Response
@@ -32,5 +34,18 @@ interface ApiInterface {
         @Path("movie_id") movieId:Int,
         @Query("api_key") apiKey:String
     ):Response<Credit>
+
+    @GET("person/{person_id}")
+    suspend fun getPersonInfo(
+        @Path("person_id") actorId:Int,
+        @Query("api_key") apiKey: String
+    ):Response<BiographyOfPerson>
+
+    @GET("person/{person_id}/movie_credits")
+    suspend fun getMovieByActor(
+        @Path("person_id") actorId: Int,
+        @Query("api_key") apiKey: String
+    ):Response<Compilation>
+
 
 }
