@@ -16,6 +16,11 @@
         <action
             android:id="@+id/action_detailFragment_to_detailOfActorFragment"
             app:destination="@id/detailOfActorFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_mainFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -37,5 +42,10 @@
         <action
             android:id="@+id/action_detailOfActorFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_detailOfActorFragment_to_mainFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

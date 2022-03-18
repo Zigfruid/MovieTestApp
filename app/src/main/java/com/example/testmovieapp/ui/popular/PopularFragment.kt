@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.testmovieapp.core.MarginItemDecoration
+import com.example.testmovieapp.core.extentions.dp
 import com.example.testmovieapp.databinding.FragmentPopularBinding
 import com.example.testmovieapp.ui.main.MainFragmentDirections
 import com.google.gson.GsonBuilder
@@ -33,6 +35,7 @@ class PopularFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvPopular.adapter = adapter
+        binding.rvPopular.addItemDecoration(MarginItemDecoration(4.dp))
         viewModel.getPopularMovies()
         setUpObservers()
 

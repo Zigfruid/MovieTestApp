@@ -44,6 +44,9 @@ class DetailMovieFragment: Fragment() {
             btnBack.onClick {
                 findNavController().popBackStack()
             }
+            btnHome.onClick {
+                findNavController().navigate(DetailMovieFragmentDirections.actionDetailFragmentToMainFragment())
+            }
             val glideUrl = GlideUrl("https://image.tmdb.org/t/p/original/${movie.posterPath}")
             Glide.with(root)
                 .load(glideUrl)

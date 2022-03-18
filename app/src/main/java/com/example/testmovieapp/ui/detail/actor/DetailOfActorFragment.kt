@@ -42,6 +42,9 @@ class DetailOfActorFragment:Fragment() {
         binding.btnBack.onClick {
             findNavController().popBackStack()
         }
+        binding.btnHome.onClick {
+            findNavController().navigate(DetailOfActorFragmentDirections.actionDetailOfActorFragmentToMainFragment())
+        }
 
         adapter.setOnClickItem {
             val gsonPretty = GsonBuilder().setPrettyPrinting().create()

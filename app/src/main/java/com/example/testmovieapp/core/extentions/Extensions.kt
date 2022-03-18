@@ -1,6 +1,7 @@
 package com.example.testmovieapp.core.extentions
 
 import android.content.Context
+import android.content.res.Resources
 import android.text.SpannableStringBuilder
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
@@ -32,6 +33,8 @@ fun View.enabled(isEnabled: Boolean): View {
     this.isEnabled = isEnabled
     return this
 }
+val Int.dp: Int
+    get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
 
 fun Fragment.showMessage(msg: String?) {
     Toast.makeText(this.requireContext(), msg, Toast.LENGTH_LONG).show()
